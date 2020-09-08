@@ -13,3 +13,29 @@
  */
 
  @import "bootstrap";
+
+ .notice_list{
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar_fixed {
+  position: sticky;
+  top: 60px;
+}
+.sidebar_content {
+  margin-bottom: 100px;
+}
+
+.top-image{
+  max-width: 100%;
+}
+
+.recommend-item{
+  margin: 50px auto;
+}
+
+.top-content{
+  margin-bottom: 100px;
+}
