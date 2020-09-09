@@ -6,11 +6,37 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# ユーザー
+
+# 1
 User.create!(
-  account_id: 'users1',
-  email: 'users1@user.com',
-  password: '000111',
-  password_confirmation: '000111',
+  account_id: 'admin_user',
+  email: 'admin_user@oniki.com',
+  password: 'oniki1124',
+  password_confirmation: 'oniki1124',
+  first_name: "管理者",
+  last_name: "株式会社オニキ商事",
+  first_name_kana: "カンリシャ",
+  last_name_kana: "カブシキカイシャオニキショウジ",
+  first_name_roman: "KANRISYA",
+  last_name_roman: "ONIKISYOJI",
+  birthday: "2020-09-07",
+  postcode: "9050206",
+  prefecture_code: "47",
+  address_city: "国頭郡本部町",
+  address_street: "本部町字石川４２４",
+  address_building: "美ら海水族館430",
+  nickname: "ONK SHOP",
+  is_valid: true,
+  admin: true
+)
+
+# 2
+User.create!(
+  account_id: 'users2',
+  email: 'users2@user.com',
+  password: '000222',
+  password_confirmation: '000222',
   first_name: "太郎",
   last_name: "山田",
   first_name_kana: "タロウ",
@@ -28,10 +54,10 @@ User.create!(
 )
 
 User.create!(
-  account_id: 'users2',
-  email: 'users2@user.com',
-  password: '000222',
-  password_confirmation: '000222',
+  account_id: 'users3',
+  email: 'users3@user.com',
+  password: '000333',
+  password_confirmation: '000333',
   first_name: "華子",
   last_name: "田中",
   first_name_kana: "ハナコ",
@@ -48,11 +74,12 @@ User.create!(
   is_valid: true,
 )
 
+# 3
 User.create!(
-  account_id: 'users3',
-  email: 'users3@user.com',
-  password: '333333',
-  password_confirmation: '333333',
+  account_id: 'users4',
+  email: 'users4@user.com',
+  password: '000444',
+  password_confirmation: '000444',
   first_name: "和久",
   last_name: "青山",
   first_name_kana: "カズヒサ",
@@ -69,11 +96,12 @@ User.create!(
   is_valid: true,
 )
 
+# 4
 User.create!(
-  account_id: 'users4',
-  email: 'users4@user.com',
-  password: '000444',
-  password_confirmation: '000444',
+  account_id: 'users5',
+  email: 'users5@user.com',
+  password: '000555',
+  password_confirmation: '000555',
   first_name: "瞳",
   last_name: "岡崎",
   first_name_kana: "ヒトミ",
@@ -88,11 +116,12 @@ User.create!(
   is_valid: true,
 )
 
+# 5
 User.create!(
-  account_id: 'users5',
-  email: 'users5@user.com',
-  password: '000555',
-  password_confirmation: '000555',
+  account_id: 'users6',
+  email: 'users6@user.com',
+  password: '000666',
+  password_confirmation: '000666',
   first_name: "蒼甫",
   last_name: "白鳥",
   first_name_kana: "ソウスケ",
@@ -106,4 +135,98 @@ User.create!(
   address_street: "大字下名栗917",
   address_building: "大松閣205",
   is_valid: true,
+)
+
+# エリア
+
+# 1
+Area.create!(
+  name: '北海道'
+)
+
+# 2
+Area.create!(
+  name: '東北'
+)
+
+# 3
+Area.create!(
+  name: '北関東'
+)
+
+# 4
+Area.create!(
+  name: '首都圏'
+)
+
+# 5
+Area.create!(
+  name: '北陸'
+)
+
+# 6
+Area.create!(
+  name: '甲信越'
+)
+
+# 7
+Area.create!(
+  name: '東海'
+)
+
+# 8
+Area.create!(
+  name: '近畿'
+)
+
+# 9
+Area.create!(
+  name: '山陽・山陰'
+)
+
+# 10
+Area.create!(
+  name: '四国'
+)
+
+# 11
+Area.create!(
+  name: '九州'
+)
+
+# 12
+Area.create!(
+  name: '沖縄'
+)
+
+# カテゴリー
+
+# 1
+Category.create!(
+  name: '食べもの',
+  is_valid: true
+)
+
+# 2
+Category.create!(
+  name: '飲みもの',
+  is_valid: true
+)
+
+# 3
+Category.create!(
+  name: '雑貨',
+  is_valid: true
+)
+
+# 4
+Category.create!(
+  name: 'ファッション',
+  is_valid: true
+)
+
+# 5
+Category.create!(
+  name: 'ヘルス＆ビューティー',
+  is_valid: true
 )

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update, :show, :destory]
+
   def index
     
   end
@@ -29,4 +31,16 @@ class UsersController < ApplicationController
       :first_name, :last_name, :first_name_kana, :last_name_kana, :first_name_roman, :last_name_roman,
     :birthday, :postcode, :prefecture_code, :address_city, :address_street, :address_building, :nickname)
   end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "ログインしてください"
+      redirect_to login_url
+    end
+  end
+
 end
