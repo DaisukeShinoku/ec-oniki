@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="sidebar_content">
+        	<ul class="list-group">
+            <li class="list-group-item list-group-item-primary text-center"><h5>エリア検索</h5></li>
+            <li class="list-group-item text-center"><h6>北海道</h6></li>
+            <li class="list-group-item text-center"><h6>東北</h6></li>
+            <li class="list-group-item text-center"><h6>北関東</h6></li>
+            <li class="list-group-item text-center"><h6>首都圏</h6></li>
+            <li class="list-group-item text-center"><h6>北陸</h6></li>
+            <li class="list-group-item text-center"><h6>甲信越</h6></li>
+            <li class="list-group-item text-center"><h6>東海</h6></li>
+            <li class="list-group-item text-center"><h6>近畿</h6></li>
+            <li class="list-group-item text-center"><h6>山陽・山陰</h6></li>
+            <li class="list-group-item text-center"><h6>四国</h6></li>
+            <li class="list-group-item text-center"><h6>九州</h6></li>
+            <li class="list-group-item text-center"><h6>沖縄</h6></li>
+          </ul>
+      </div>
+      <div class="sidebar_content">
+        	<ul class="list-group">
+            <li class="list-group-item list-group-item-warning text-center"><h4>ジャンル検索</h4></li>
+            <li class="list-group-item text-center"><h5>日用品</h5></li>
+            <li class="list-group-item text-center"><h5>ファッションアイテム</h5></li>
+            <li class="list-group-item text-center"><h5>食品</h5></li>
+            <li class="list-group-item text-center"><h5>美容関係</h5></li>
+          </ul>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="row">
+        <div class="col-8">
+          <figure class="image">
+            <% if @product.image? %>
+              <%= image_tag @product.image.url, class: "top-image" %><br>
+            <% else %>
+              <%= image_tag 'noimage.jpg' %><br>
+            <% end %>
+          </figure>
+        </div>
+        <div class="col-4">
+          <span class="badge badge-danger"><%= @product.category.name %></span>
+          <span class="badge badge-danger"><%= @product.area.name %></span><br>
+          <br>
+          <h2> <%= @product.name %> </h2>
+          <br>
+          <h6> <%= @product.introduction %> </h6>
+          <br>
+          <div><h3><%= number_to_currency(@product.price_tax, :format => "%u%n", :unit => "￥", :precision => 0) %><span class="h6">(税込)</span></h3></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          カート機能
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

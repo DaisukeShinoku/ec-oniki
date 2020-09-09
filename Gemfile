@@ -71,3 +71,7 @@ gem 'jquery-rails'
 gem 'bcrypt'
 
 gem 'jp_prefecture'
+
+gem 'carrierwave'
+
+gem 'mini_magick'
