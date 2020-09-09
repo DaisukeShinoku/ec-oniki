@@ -1,0 +1,36 @@
+    <div class="container">
+        <div class="login-header">
+           <div class="row">
+                    <h1>ログイン</h1>
+            </div>
+        </div>
+    </div>
+
+    <hr class="login-border">
+    
+    <div class="container">
+
+    <%= render 'layouts/flash' %>
+    
+      <div class="row justify-content-md-center">
+        
+            <div class="col-10">
+              <%= form_for(:session, url: login_path) do |f| %>
+
+
+                <div class="form-group">
+                    <label for="email"><span class="badge badge-danger">必須</span> メールアドレス</label>
+                    <%= f.email_field :email, class: "form-control " %>
+                </div>
+                <div class="form-group">
+                    <label for="password"><span class="badge badge-danger">必須</span> パスワード</label>
+                    <%= f.password_field :password, class: "form-control " %>
+                </div>
+                
+								<%= f.submit "ログインする" , class: "btn btn-primary"  %>
+              <% end %>
+            </div>
+      </div>
+    </div>
+
+    <hr class="login-border">

@@ -5,9 +5,13 @@
         <a class="text-muted" href="#">ONK SHOPPING</a>
       </div>
       <div class="col-8 d-flex justify-content-end align-items-center">
-        <a class="btn btn-sm btn-outline-secondary" href="#">メルマガ登録</a>
-        <a class="btn btn-sm btn-outline-secondary" href="#">ログイン</a>
-        <a class="btn btn-sm btn-outline-secondary" href="#">カート</a>
+        <% if logged_in? %>
+          <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-sm btn-secondary' %>
+          <a class="btn btn-sm btn-outline-secondary" href="#">カート</a>
+        <% else %>
+          <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-secondary' %>
+          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-secondary' %>
+        <% end %>
       </div>
     </div>
   </div>
