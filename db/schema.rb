@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2020_09_07_134117) do
     t.string "last_name_kana", null: false
     t.string "first_name_roman", null: false
     t.string "last_name_roman", null: false
-    t.boolean "gender", null: false
     t.date "birthday", null: false
     t.string "postcode", null: false
     t.string "prefecture_code", null: false
