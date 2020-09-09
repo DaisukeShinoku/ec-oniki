@@ -13,3 +13,69 @@
  */
 
  @import "bootstrap";
+
+ .notice_list{
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar_fixed {
+  position: sticky;
+  top: 60px;
+}
+.sidebar_content {
+  margin-bottom: 100px;
+}
+
+.top-image{
+  max-width: 100%;
+}
+
+.recommend-item{
+  margin: 50px auto;
+}
+
+.top-content{
+  margin-bottom: 100px;
+}
+
+.signup-header{
+  margin-top: 30px;
+  color: #dc3545;
+}
+hr{
+  border-width: 3px;
+  border-color: #dc3545;
+}
+h1{
+  font-size: 25px;
+    font-weight: bold;
+    margin: 0;
+  text-align: center;
+}
+.align-light{
+    text-align: right;
+}
+.form-group{
+  margin-bottom: 35px;
+}
+input:required{
+  background: #ffcdd2;
+}
+input[type="email"]:invalid{
+  background: #ffcdd2;
+}
+
+input:focus{
+  background: #DCEDC8;
+}
+
+#error_explanation {
+  color: red;
+}
+
+#error_explanation ul {
+  color: red;
+  margin: 0 0 30px 0;
+}

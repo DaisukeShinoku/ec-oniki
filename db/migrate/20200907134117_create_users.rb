@@ -12,8 +12,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name_roman, null: false
       t.string :last_name_roman, null: false
 
-      t.boolean :gender, null: false
-
       t.date :birthday, null: false
 
       t.string :postcode, null: false
