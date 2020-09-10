@@ -10,32 +10,7 @@
   </div>
   <div class="row top-content">
     <div class="col-3">
-      <div class="sidebar_content">
-        	<ul class="list-group">
-            <li class="list-group-item list-group-item-primary text-center"><h5>エリア検索</h5></li>
-            <li class="list-group-item text-center"><h6>北海道</h6></li>
-            <li class="list-group-item text-center"><h6>東北</h6></li>
-            <li class="list-group-item text-center"><h6>北関東</h6></li>
-            <li class="list-group-item text-center"><h6>首都圏</h6></li>
-            <li class="list-group-item text-center"><h6>北陸</h6></li>
-            <li class="list-group-item text-center"><h6>甲信越</h6></li>
-            <li class="list-group-item text-center"><h6>東海</h6></li>
-            <li class="list-group-item text-center"><h6>近畿</h6></li>
-            <li class="list-group-item text-center"><h6>山陽・山陰</h6></li>
-            <li class="list-group-item text-center"><h6>四国</h6></li>
-            <li class="list-group-item text-center"><h6>九州</h6></li>
-            <li class="list-group-item text-center"><h6>沖縄</h6></li>
-          </ul>
-      </div>
-      <div class="sidebar_content">
-        	<ul class="list-group">
-            <li class="list-group-item list-group-item-warning text-center"><h4>ジャンル検索</h4></li>
-            <li class="list-group-item text-center"><h5>日用品</h5></li>
-            <li class="list-group-item text-center"><h5>ファッションアイテム</h5></li>
-            <li class="list-group-item text-center"><h5>食品</h5></li>
-            <li class="list-group-item text-center"><h5>美容関係</h5></li>
-          </ul>
-      </div>
+      <%= render 'shared/sidebar', {categories: @categories, areas: @areas} %>
     </div>
     <div class="col-9">
       <%= image_tag 'sale02.jpeg', class: "top-image"%>

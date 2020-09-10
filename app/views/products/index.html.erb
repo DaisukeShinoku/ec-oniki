@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <%= render 'shared/sidebar', {categories: @categories, areas: @areas} %>
+    </div>
+    <div class="col-9">
+      <h1><%= @message %></h1>
+      <br>
+      <div class="row">
+        <% @products.each do |product| %>
+          <div class="col-4">
+            <div class="card products-box">
+              <%= link_to product_path(product) do %>
+                <% if product.image? %>
+                  <%= image_tag product.image.url, :size => "280x210", class: "top-image" %><br>
+                <% else %>
+                  <%= image_tag 'noimage.jpg' %><br>
+                <% end %>
+              <% end %>
+              <p class="h5"><%= product.name %></p>
+              <%= number_to_currency(product.price_tax, :format => "%u%n", :unit => "￥", :precision => 0) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
