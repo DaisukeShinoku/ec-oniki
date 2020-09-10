@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-3">
-      <%= render 'shared/sidebar' %>
+      <%= render 'shared/sidebar', {categories: @categories, areas: @areas} %>
     </div>
     <div class="col-9">
       <div class="row">
@@ -20,7 +20,7 @@
           <br>
           <h2> <%= @product.name %> </h2>
           <br>
-          <h6> <%= @product.introduction %> </h6>
+          <h6> <%= safe_join(@product.introduction.split("\n"), tag(:br)) %></h6>
           <br>
           <div><h3><%= number_to_currency(@product.price_tax, :format => "%u%n", :unit => "￥", :precision => 0) %><span class="h6">(税込)</span></h3></div>
         </div>

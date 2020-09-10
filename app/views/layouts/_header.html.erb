@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <a class="text-muted" href="#">ONK SHOPPING</a>
+        <%= link_to 'ONK SHOPPING', root_path, class: "text-muted" %>
       </div>
       <div class="col-8 d-flex justify-content-end align-items-center">
         <% if logged_in? %>
@@ -17,28 +17,13 @@
   </div>
 </header>
 
-<div class="container nav-scroller py-1 mb-2">
-  <nav class="nav d-flex justify-content-between">
-    <a class="p-2 text-muted" href="#">おみやげ</a>
-    <a class="p-2 text-muted" href="#">お取り寄せ</a>
-    <a class="p-2 text-muted" href="#">ギフト</a>
-    <a class="p-2 text-muted" href="#">トラベル&バッグ</a>
-    <a class="p-2 text-muted" href="#">特集一覧</a>
-    <a class="p-2 text-muted" href="#">ブランド一覧</a>
-    <a class="p-2 text-muted" href="#">商品ジャンル</a>
-  </nav>
-</div>
-
-
 <div class="nav-scroller py-1 mb-2" style="background-color: #eae6e4;">
 <div class="container">
   <nav class="nav d-flex justify-content-between">
     <a class="p-2 text-muted justify-content-start">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
     </a>
-    <a class="p-2 text-muted justify-content-end">
-      ランキング
-    </a>
+    <%= link_to '商品一覧', products_path, class: "p-2 text-muted justify-content-end" %>
   </nav>
 </div>
 </div>
