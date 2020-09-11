@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @categories = Category.all
     @areas = Area.all
+    @cart_product = CartProduct.new
   end
   
 end

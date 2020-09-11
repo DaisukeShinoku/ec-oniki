@@ -10,6 +10,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :products
+  resources :cart_products, only: [:index, :update, :create, :destroy] do
+    collection do
+      delete :destroy_all
+    end
+  end
 
   namespace :admin do
     resources :products
