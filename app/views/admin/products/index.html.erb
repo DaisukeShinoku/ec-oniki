@@ -1,3 +1,33 @@
 <div class="container">
-  INDEX
+
+<%= render 'layouts/flash' %>
+
+  <div class="row">
+    <div class="col-3">
+      <%= render 'shared/admin_sidebar', {categories: @categories, areas: @areas} %>
+    </div>
+    <div class="col-9">
+      <h1><%= @message %></h1>
+      <br>
+      <div class="row">
+        <% @products.order('id').each do |product| %>
+          <div class="col-4">
+            <div class="card products-box">
+              <%= link_to admin_product_path(product) do %>
+                <% if product.image? %>
+                  <%= image_tag product.image.url, :size => "280x210", class: "top-image" %><br>
+                <% else %>
+                  <%= image_tag 'noimage.jpg', :size => "280x210", class: "top-image" %><br>
+                <% end %>
+              <% end %>
+              <p class="h5"><%= product.name %></p>
+              <div><h5><%= number_to_currency(product.price_tax, :format => "%u%n", :unit => "￥", :precision => 0) %><span class="h6">(税込)</span></h5></div>
+              <p><span class="badge badge-secondary"><%= product.category.name %></span>
+              <span class="badge badge-secondary"><%= product.area.name %></span></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,7 +1,7 @@
     <div class="container">
         <div class="signup-header">
            <div class="row">
-                    <h1>商品登録</h1>
+              <h1>商品情報の更新</h1>
             </div>
         </div>
     </div>
@@ -15,7 +15,7 @@
       <div class="row justify-content-md-center">
         
             <div class="col-10">
-              <%= form_for @product, url: admin_products_path, method: :post do |f| %>
+              <%= form_for @product, url: admin_product_path, method: :patch do |f| %>
 
                 <div class="form-group">
                     <label for="category_id"><span class="badge badge-danger">必須</span> カテゴリー選択</label>

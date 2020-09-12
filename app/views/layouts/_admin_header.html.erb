@@ -1,0 +1,28 @@
+<header class="blog-header py-3 bg-dark" >
+  <div class="container">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-4 pt-1">
+        <%= link_to 'ONK SHOPPING(管理者版)', admin_top_path, class: "text-white" %>
+      </div>
+      <div class="col-8 d-flex justify-content-end align-items-center">
+          <%= link_to '会員情報一覧', admin_users_path, class: 'btn btn-sm btn-secondary' %>
+          <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-sm btn-outline-secondary text-white' %>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="nav-scroller py-1 mb-2 bg-dark">
+  <div class="container">
+  <nav class="navbar">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="justify-content-end">
+      <%= link_to '商品一覧', admin_products_path, class: "p-2 text-white justify-content-end" %>
+      <%= link_to 'カート', cart_products_path, class: "p-2 text-white justify-content-end" %>
+    </div>
+  </nav>
+  </div>
+</div>

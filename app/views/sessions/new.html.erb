@@ -26,8 +26,14 @@
                     <label for="password"><span class="badge badge-danger">必須</span> パスワード</label>
                     <%= f.password_field :password, class: "form-control " %>
                 </div>
+
+                <div class="form-group">
+                  <%= f.label :remember_me, class: "checkbox" do %>
+                  <p><%= f.check_box :remember_me %>次回から自動でログインする</p>
+                  <% end %>
+                </div>
                 
-								<%= f.submit "ログインする" , class: "btn btn-primary"  %>
+                <%= f.submit "ログインする" , class: "btn btn-primary"  %>
               <% end %>
             </div>
       </div>

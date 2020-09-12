@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  attr_accessor :image_cache
   mount_uploader :image, ImageUploader
 
   belongs_to :category
