@@ -1,4 +1,16 @@
 class Destination < ApplicationRecord
+
+  include JpPrefecture
+  jp_prefecture :prefecture_code
+
+  def prefecture_name
+    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
+  end
+
+  def prefecture_name=(prefecture_name)
+    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
+  end
+
   belongs_to :user
 
   validates :user_id, presence: true
@@ -15,7 +27,7 @@ class Destination < ApplicationRecord
   end
   
   def fulladdress
-    "〒" + postcode_view + " " + prefecture_name + address_city + address_street + address_building
+    "〒" + postcode_view + " " + prefecture_name + " " + address_city + " " + address_street + " " + address_building
   end
 
 end

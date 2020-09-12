@@ -1,0 +1,57 @@
+<br>
+<br>
+    <div class="container">
+        <div class="mypage-header">
+           <div class="row">
+            <div class="col">
+              <h1 class="text-left">登録住所 / 一覧</h1>
+            </div>
+            <div class="col text-right">
+              <%= link_to "登録住所を追加する", new_destination_url, class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+    </div>
+
+<hr class="mypage-border">
+<br>
+<br>
+
+<div class="container">
+
+  <%= render 'layouts/flash' %>
+
+    <div class="row profile-box">
+      <table class='table table-bordered'>
+        <thead>
+          <tr class="active">
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @destinations.each do |destination| %>
+            <tr>
+              <td><%= destination.fulladdress %></td>
+              <td><%= destination.receiver %></td>
+              <td>
+                <%= link_to "編集する", edit_destination_path(destination.id), class: "btn-sm btn-success" %>
+                <%= link_to "削除する", destination_path(destination.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+<br>
+<br>
+
+<hr class="mypage-border">
+
+<br>
+<br>
+

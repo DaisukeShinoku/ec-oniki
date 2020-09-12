@@ -1,0 +1,30 @@
+              <%= form_for(@destination) do |f| %>
+
+                <div class="form-group">
+                    <label for="postcode"><span class="badge badge-danger">必須</span> 郵便番号</label>
+                    <%= f.text_field :postcode, class: "form-control ", placeholder: "例:1638001(-:ハイフン は不要です)" %>
+                </div>
+                <div class="form-group">
+                    <label for="prefecture_code"><span class="badge badge-danger">必須</span> 都道府県</label>
+                    <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name ,include_blank: '都道府県' %>
+                </div>
+                <div class="form-group">
+                    <label for="address_city"><span class="badge badge-danger">必須</span> 住所(市町村区)</label>
+                    <%= f.text_field :address_city, class: "form-control ", placeholder: "例:新宿区" %>
+                </div>
+                <div class="form-group">
+                    <label for="address_street"><span class="badge badge-danger">必須</span> 住所(番地)</label>
+                    <%= f.text_field :address_street, class: "form-control ", placeholder: "例:西新宿2-8-1" %>
+                </div>
+                <div class="form-group">
+                    <label for="address_building"><span class="badge badge-primary">任意</span> 住所(ビル名・部屋番号)</label>
+                    <%= f.text_field :address_building, class: "form-control ", placeholder: "例:都庁アパート302号室" %>
+                </div>
+
+                <div class="form-group">
+                    <label for="receiver"><span class="badge badge-danger">必須</span> 宛名</label>
+                    <%= f.text_field :receiver, class: "form-control ", placeholder: "例:山田太郎" %>
+                </div>
+                
+                <%= f.submit "登録する" , class: "btn btn-primary"  %>
+              <% end %>

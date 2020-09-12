@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:success] = 'ログインしました!!'
-      if user.is_valid == false
+      if user.admin == false
         redirect_to user
       else
         redirect_to admin_top_url
