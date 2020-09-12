@@ -32,15 +32,4 @@ class UsersController < ApplicationController
     :birthday, :postcode, :prefecture_code, :address_city, :address_street, :address_building, :nickname)
   end
 
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
-  end
-
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = "ログインしてください"
-      redirect_to login_url
-    end
-  end
-
 end

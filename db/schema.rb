@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_112850) do
+ActiveRecord::Schema.define(version: 2020_09_12_033052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,48 @@ ActiveRecord::Schema.define(version: 2020_09_11_112850) do
     t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "destinations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "postcode", null: false
+    t.string "prefecture_code", null: false
+    t.string "address_city", null: false
+    t.string "address_street", null: false
+    t.string "address_building"
+    t.string "receiver", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_destinations_on_user_id"
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "order_id", null: false
+    t.integer "price", null: false
+    t.integer "quantity", null: false
+    t.integer "work_status", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["user_id"], name: "index_order_products_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "receiver", null: false
+    t.string "postcode", null: false
+    t.string "prefecture_code", null: false
+    t.string "address_city", null: false
+    t.string "address_street", null: false
+    t.string "address_building"
+    t.integer "payment_option", null: false
+    t.integer "status", default: 1, null: false
+    t.integer "postage", default: 800, null: false
+    t.integer "billing", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -79,6 +121,10 @@ ActiveRecord::Schema.define(version: 2020_09_11_112850) do
 
   add_foreign_key "cart_products", "products"
   add_foreign_key "cart_products", "users"
+  add_foreign_key "destinations", "users"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "areas"
   add_foreign_key "products", "categories"
 end
