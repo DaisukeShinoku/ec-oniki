@@ -89,7 +89,7 @@
   <div class="row">
     <div class="col-12">
       <%= form_for(@order, url:orders_path) do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
+        <%#= render 'shared/error_messages', object: f.object %>
 
           <%= f.hidden_field :user_id, :value => current_user.id %>
           <!--支払い方法-->
@@ -107,8 +107,11 @@
 
           <%= f.hidden_field :radio_number, :value =>@order.radio_number %>
           <!--ボタン-->
-          <div>
-            <%= f.submit "注文を確定する", class: "btn btn-success btn-lg" %>
+          <div class="text-right">
+            <span><%= f.submit "注文を確定する", class: "btn btn-success btn-lg" %></span>
+          </div>
+          <div class="text-left">
+            <span><%= link_to ">>お支払い方法・お届け先の選択に戻る", new_order_path, class: "h6" %></span>
           </div>
       <% end %>
     </div>

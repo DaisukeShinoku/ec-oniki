@@ -26,5 +26,6 @@
                     <%= f.text_field :receiver, class: "form-control ", placeholder: "例:山田太郎" %>
                 </div>
                 
-                <%= f.submit "登録する" , class: "btn btn-primary"  %>
+                <span><%= f.submit "登録する" , class: "btn btn-primary"  %></span>
+                <span><%= link_to "一覧に戻る", destinations_path, class: "btn btn-secondary" %></span>
               <% end %>

@@ -24,6 +24,10 @@
   <br>
   <br>
 
+
+
+<% if current_user.orders.present? %>
+
   <div class="row">
     <div class="col-12">
       <table class="table table-hover table-bordered">
@@ -69,6 +73,17 @@
       </table>
     </div>
   </div>
+
+<% else %>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="text-center"><%= link_to "まだ注文はありません！お買い物を楽しみましょう!", products_path, class: "btn btn-info" %></div>
+    </div>
+  </div>
+
+<% end %>
+
 
   <br>
   <br>
