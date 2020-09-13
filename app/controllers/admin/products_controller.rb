@@ -3,11 +3,24 @@ class Admin::ProductsController < ApplicationController
   before_action :admin_user
 
   def index
-    @products = Product.all
+    @products = SearchProductsForm.new(params).result
+    @categories = Category.all
+    @areas = Area.all
+
+    if params[:area_id]
+      @message = "「#{Area.find(params[:area_id]).name}」の商品一覧"
+    elsif params[:category_id]
+      @message = "「#{Category.find(params[:category_id]).name}」の商品一覧"
+    else
+      @message = "商品一覧"
+    end
+
   end
 
   def show
     @product = Product.find(params[:id])
+    @categories = Category.all
+    @areas = Area.all
   end
   
   def new
@@ -27,9 +40,11 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @product.image.cache! unless @product.image.blank?
   end
   
   def update
+    @product = Product.find(params[:id])
     if @product.update(products_params)
       flash[:success] = '商品を更新しました'
       redirect_to admin_product_path(@product)
@@ -42,7 +57,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def products_params
-    params.require(:product).permit(:category_id, :area_id, :name, :introduction, :price, :is_valid, :image)
+    params.require(:product).permit(:category_id, :area_id, :name, :introduction, :price, :is_valid, :image, :image_cache)
   end
 
   def admin_user

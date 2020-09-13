@@ -6,11 +6,11 @@
       </div>
       <div class="col-8 d-flex justify-content-end align-items-center">
         <% if logged_in? %>
-          <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-sm btn-secondary' %>
-          <a class="btn btn-sm btn-outline-secondary" href="#">カート</a>
+          <%= link_to 'マイページ', user_path(current_user), class: 'btn btn-sm btn-secondary' %>
+          <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-sm btn-outline-secondary' %>
         <% else %>
           <%= link_to 'ユーザー登録', signup_path, class: 'btn btn-sm btn-secondary' %>
-          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-secondary' %>
+          <%= link_to 'ログイン', login_path, class: 'btn btn-sm btn-outline-secondary' %>
         <% end %>
       </div>
     </div>
@@ -19,11 +19,15 @@
 
 <div class="nav-scroller py-1 mb-2" style="background-color: #eae6e4;">
 <div class="container">
-  <nav class="nav d-flex justify-content-between">
-    <a class="p-2 text-muted justify-content-start">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-    </a>
-    <%= link_to '商品一覧', products_path, class: "p-2 text-muted justify-content-end" %>
+  <nav class="navbar">
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <div class="justify-content-end">
+      <%= link_to '商品一覧', products_path, class: "p-2 text-muted justify-content-end" %>
+      <%= link_to 'カート', cart_products_path, class: "p-2 text-muted justify-content-end" %>
+    </div>
   </nav>
 </div>
 </div>

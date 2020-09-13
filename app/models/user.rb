@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  attr_accessor :remember_token
 
   before_save { self.email = email.downcase }
 
@@ -12,26 +13,26 @@ class User < ApplicationRecord
   def prefecture_name=(prefecture_name)
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
+  
+  validates :first_name, presence: true, length: {maximum: 20}
+  validates :last_name, presence: true, length: {maximum: 20}
+  validates :first_name_kana, presence: true, length: {maximum: 20}, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+  validates :last_name_kana, presence: true, length: {maximum: 20}, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+  validates :first_name_roman, presence: true, length: {maximum: 30}, format: { with: /\A[A-Z]+\z/, message: 'は半角英大文字で入力して下さい。'}
+  validates :last_name_roman, presence: true, length: {maximum: 30}, format: { with: /\A[A-Z]+\z/, message: 'は半角英大文字で入力して下さい。'}
 
-  with_options presence: true do
-    validates :email
-    validates :account_id
-    validates :first_name
-    validates :last_name
-    validates :first_name_kana
-    validates :last_name_kana
-    validates :first_name_roman
-    validates :last_name_roman
-    validates :birthday
-    validates :postcode
-    validates :prefecture_code
-    validates :address_city
-    validates :address_street
-    validates :is_valid
-  end
+  validates :birthday, presence: true
+
+  validates :postcode, presence: true, format: {with: /\A\d{7}\z/}
+  validates :prefecture_code, presence: true
+  validates :address_city, presence: true, length: {maximum: 15}
+  validates :address_street, presence: true, length: {maximum: 30}
+  validates :address_building, length: {maximum: 30}
+
+  validates :is_valid, inclusion: { in: [true, false] }
 
   VALID_ACCOUNT_REGEX = /\A[0-9a-z_]{1,15}\z/i
-  validates :account_id, length: {in: 6..15}, format: { with: VALID_ACCOUNT_REGEX }, uniqueness: true
+  validates :account_id, presence: true, length: {in: 6..15}, format: { with: VALID_ACCOUNT_REGEX }, uniqueness: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
@@ -39,6 +40,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   has_many :cart_products, dependent: :destroy
+  has_many :destinations, dependent: :destroy
+  has_many :orders
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -46,12 +49,34 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
   end
 
+  def User.new_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def remember
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  def authenticated?(remember_token)
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def forget
+    update_attribute(:remember_digest, nil)
+  end
+
   def fullname
     last_name + first_name
   end
 
+  def postcode_view
+    self.postcode.to_s.insert(3, "-")
+  end
+  
   def fulladdress
-    prefecture_name + address_city + address_street + address_building
+    "〒" + postcode_view + " " + prefecture_name + " " + address_city + " " + address_street + " " + address_building
   end
 
 end

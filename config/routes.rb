@@ -8,15 +8,26 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :users
-  resources :products
+  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :products, only: [:index, :show]
+  resources :destinations, only: [:new, :index, :create, :edit, :update, :destroy]
+
   resources :cart_products, only: [:index, :update, :create, :destroy] do
     collection do
       delete :destroy_all
     end
   end
 
+  resources :orders, only: [:new, :create, :index, :show] do
+    collection do
+      get :confirm
+      get :thanks
+    end
+  end
+
   namespace :admin do
+    get '/top', to: 'homes#top' 
     resources :products
+    resources :users, only: [:index, :show, :edit, :update]
   end
 end

@@ -10,8 +10,19 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
+    
+    <% if logged_in? && current_user.admin? %>
+      <%= render 'layouts/admin_header' %>
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
+
     <%= yield %>
-    <%= render 'layouts/footer' %>
+
+    <% if logged_in? && current_user.admin? %>
+      <%= render 'layouts/admin_footer' %>
+    <% else %>
+      <%= render 'layouts/footer' %>
+    <% end %>
   </body>
 </html>

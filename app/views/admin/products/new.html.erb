@@ -46,9 +46,10 @@
                 <div class="form-group">
                     <label for="introduction"><span class="badge badge-primary">任意</span> 画像を登録する</label>
                     <%= f.file_field :image, class: "form-control " %>
+                    <%= f.hidden_field :image_cache %>
                 </div>
 
-								<%= f.submit "商品を登録する" , class: "btn btn-primary"  %>
+                <%= f.submit "商品を登録する" , class: "btn btn-primary"  %>
               <% end %>
             </div>
       </div>

@@ -1,0 +1,43 @@
+    <div class="container">
+        <div class="mypage-header">
+           <div class="row">
+              <h1>会員情報一覧</h1>
+            </div>
+        </div>
+    </div>
+
+<hr class="mypage-border">
+
+<div class="container">
+
+  <%= render 'layouts/flash' %>
+
+  <div class="table-responsive">
+    <table class="table">
+      <tr class="active">
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    <% @users.order('id').each do |user| %>
+      <tr>
+        <td><%= user.id%></td>
+        <td><%= link_to user.fullname, admin_user_path(user.id) %></td>
+        <td><%= user.email%></td>
+        <td>
+          <% if user.is_valid == true %>
+            <span class="badge badge-primary">有効会員</span>
+          <% else %>
+            <span class="badge badge-danger">退会済み</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </table>
+  </div>
+
+</div>
+
+
+<hr class="mypage-border">

@@ -1,7 +1,10 @@
 <div class="container">
+
+<%= render 'layouts/flash' %>
+
   <div class="row">
     <div class="col-3">
-      <%= render 'shared/sidebar' %>
+      <%= render 'shared/admin_sidebar', {categories: @categories, areas: @areas} %>
     </div>
     <div class="col-9">
       <div class="row">
@@ -10,14 +13,13 @@
             <% if @product.image? %>
               <%= image_tag @product.image.url, class: "top-image" %><br>
             <% else %>
-              <%= image_tag 'noimage.jpg' %><br>
+              <%= image_tag 'noimage.jpg', class: "top-image" %><br>
             <% end %>
           </figure>
         </div>
         <div class="col-4">
-          <span class="badge badge-danger"><%= @product.category.name %></span>
-          <span class="badge badge-danger"><%= @product.area.name %></span><br>
-          <br>
+          <h4><span class="badge badge-danger"><%= @product.category.name %></span>
+          <span class="badge badge-danger"><%= @product.area.name %></span></h4>
           <h2> <%= @product.name %> </h2>
           <br>
           <h6> <%= @product.introduction %> </h6>
@@ -27,7 +29,7 @@
       </div>
       <div class="row">
         <div class="col">
-          カート機能
+          <%= link_to '管理者権限で登録情報を編集する', edit_admin_product_path(@product.id), class: 'btn btn-primary' %>
         </div>
       </div>
     </div>

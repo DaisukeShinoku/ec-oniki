@@ -1,12 +1,21 @@
+<br>
+<br>
     <div class="container">
         <div class="mypage-header">
            <div class="row">
-                    <h1>マイページ</h1>
+            <div class="col">
+              <h1 class="text-left">マイページ</h1>
             </div>
+            <div class="col text-right">
+              <%= link_to "登録情報を編集する", edit_user_path(@user), class: "btn btn-primary" %>
+            </div>
+          </div>
         </div>
     </div>
 
 <hr class="mypage-border">
+<br>
+<br>
 
 <div class="container">
 
@@ -38,4 +47,24 @@
     </div>
 </div>
 
+<br>
+<br>
+
 <hr class="mypage-border">
+
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+    <h3>登録住所&nbsp;&nbsp;&nbsp;</h3>
+    <%= link_to "一覧を見る", destinations_path, class: "btn btn-info" %>
+  </div>
+  <br>
+  <div class="row">
+    <h3>注文履歴&nbsp;&nbsp;&nbsp;</h3>
+    <%= link_to "一覧を見る", root_path, class: "btn btn-info" %>
+  </div>
+</div>
+<br>
+<br>
