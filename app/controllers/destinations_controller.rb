@@ -1,5 +1,6 @@
 class DestinationsController < ApplicationController
   before_action :logged_in_user
+  before_action :dest_correct_user,   only: [:edit, :update, :destroy]
 
   def new
     @destination = Destination.new
@@ -47,6 +48,11 @@ class DestinationsController < ApplicationController
 
   def destination_params
     params.require(:destination).permit(:postcode, :prefecture_code, :address_city, :address_street, :address_building, :receiver)
+  end
+
+  def dest_correct_user
+    @destination = current_user.destinations.find_by(id: params[:id])
+    redirect_to root_url if @destination.nil?
   end
   
 end

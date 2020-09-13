@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user
+  before_action :order_correct_user,   only: [:show]
 
   include OrdersHelper
 
@@ -104,7 +105,12 @@ class OrdersController < ApplicationController
   end
 
   private
-  
+
+  def order_correct_user
+    @order = current_user.orders.find_by(id: params[:id])
+    redirect_to root_url if @order.nil?
+  end
+
   def destination_when1
     ##自分の住所
     @order = Order.new(
@@ -169,4 +175,5 @@ class OrdersController < ApplicationController
       end
     end
   end
+
 end

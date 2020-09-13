@@ -17,6 +17,8 @@
 <br>
 <br>
 
+<% if current_user.destinations.present? %>
+
 <div class="container">
 
   <%= render 'layouts/flash' %>
@@ -46,6 +48,24 @@
       </table>
     </div>
 </div>
+
+<% else %>
+
+<div class="container">
+
+<%= render 'layouts/flash' %>
+
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center">
+        マイページに登録されたご住所以外の配送先は設定されていません
+      </h1>
+    </div>
+  </div>
+
+</div>
+
+<% end %>
 
 <br>
 <br>

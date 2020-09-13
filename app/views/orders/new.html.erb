@@ -78,7 +78,8 @@
 
         <div class="form-group row">
           <div class="col-10 justify-content-md-center">
-            <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+            <span><%= f.submit "確認画面へ進む", class: "btn btn-primary" %></span>
+            <span><%= link_to "カートに戻る", cart_products_path, class: "btn btn-secondary" %></span>
           </div>
         </div>
 
