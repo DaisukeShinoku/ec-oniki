@@ -7,7 +7,14 @@
       <%= render 'shared/admin_sidebar', {categories: @categories, areas: @areas} %>
     </div>
     <div class="col-9">
-      <h1><%= @message %></h1>
+      <div class="row">
+        <div class="col text-left">
+          <h1 class="text-left"><%= @message %></h1>
+        </div>
+        <div class="col text-right">
+          <%= link_to '＋', new_admin_product_path, class: "btn btn-success btn-lg" %>
+        </div>
+      </div>
       <br>
       <div class="row">
         <% @products.each do |product| %>

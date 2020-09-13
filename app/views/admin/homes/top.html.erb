@@ -1,10 +1,20 @@
 <div class="container">
+
+<%= render 'layouts/flash' %>
+
   <div class="row">
     <div class="col-3">
       <%= render 'shared/admin_sidebar', {categories: @categories, areas: @areas} %>
     </div>
     <div class="col-9">
-      
+      <br>
+      <br>
+      <br>
+      <h1 class="text-center">本日の注文件数</h1>
+      <br>
+      <br>
+      <br>
+      <h2 class="text-center"><%= link_to @orders.count, admin_orders_path %> 件</h2>
     </div>
   </div>
 </div>
