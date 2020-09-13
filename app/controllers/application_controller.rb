@@ -23,5 +23,13 @@ class ApplicationController < ActionController::Base
   def not_normal_user
     redirect_to(admin_top_url) if current_user.admin?
   end
+
+    # ゲストユーザーかどうか確認
+    def check_guest
+      if current_user.guest?
+      flash[:danger] = "ゲストユーザーには許可されていないアクションです"
+      redirect_to root_url
+      end
+    end
   
 end

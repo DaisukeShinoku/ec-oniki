@@ -25,4 +25,19 @@ class SessionsController < ApplicationController
     flash[:info] = 'ログアウトしました!!'
     redirect_to root_url
   end
+
+  def user_guest
+    user = User.find_by(email: "users7@user.com")
+    log_in user
+    flash[:info] = 'ゲストユーザーとしてログインしました'
+    redirect_to user
+  end
+
+  def admin_guest
+    user = User.find_by(email: "users8@user.com")
+    log_in user
+    flash[:info] = 'ゲストユーザー(管理者)としてログインしました'
+    redirect_to admin_top_url
+  end
+  
 end

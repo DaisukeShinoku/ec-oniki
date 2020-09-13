@@ -30,6 +30,7 @@ class Admin::OrdersController < ApplicationController
     if  @order.update( params_int(order_params) )
       @order.auto_update_work_status
       flash[:success] = "注文ステータスの更新が完了しました"
+      redirect_to admin_order_path(@order)
     else
       @order_products = @order.order_products
       flash.now[:danger] = "注文ステータスの更新に失敗しました"
@@ -43,7 +44,7 @@ class Admin::OrdersController < ApplicationController
     if @order_product.update( params_int(order_product_params) )
       @order_product.auto_update_order_status
       flash[:success] = "商品別ステータスの更新が完了しました"
-      redirect_to "/admin/orders/#{@order.id}"
+      redirect_to admin_order_path(@order)
     else
       @order_products = @order.order_products
       flash.now[:danger] = "商品別ステータスの更新に失敗しました"

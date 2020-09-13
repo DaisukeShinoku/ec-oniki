@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :logged_in_user
   before_action :admin_user
+  before_action :check_guest, only: [:edit, :update]
 
   def index
     @users = User.all
