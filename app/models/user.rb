@@ -76,7 +76,11 @@ class User < ApplicationRecord
   end
   
   def fulladdress
-    "〒" + postcode_view + " " + prefecture_name + " " + address_city + " " + address_street + " " + address_building
+    if self.address_building?
+      "〒" + postcode_view + " " + prefecture_name + " " + address_city + " " + address_street + " " + address_building
+    else
+      "〒" + postcode_view + " " + prefecture_name + " " + address_city + " " + address_street
+    end
   end
 
 end

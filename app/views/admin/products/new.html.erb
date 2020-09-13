@@ -48,8 +48,14 @@
                     <%= f.file_field :image, class: "form-control " %>
                     <%= f.hidden_field :image_cache %>
                 </div>
-
-                <%= f.submit "商品を登録する" , class: "btn btn-primary"  %>
+                <div>
+                  <span>
+                    <%= f.submit "商品を登録する" , class: "btn btn-primary"  %>
+                  </span>
+                  <span>
+                    <%= link_to '商品一覧に戻る', admin_products_path, class: 'btn btn-secondary text-right' %>
+                  </span>
+                </div>
               <% end %>
             </div>
       </div>
