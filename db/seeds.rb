@@ -11,9 +11,9 @@
 # 1
 User.create!(
   account_id: 'admin_user',
-  email: 'admin_user@oniki.com',
-  password: 'oniki1124',
-  password_confirmation: 'oniki1124',
+  email: ENV['ADMIN_ADDRESS'],
+  password: ENV['ADMIN_PASSWORD'],
+  password_confirmation: ENV['ADMIN_PASSWORD'],
   first_name: "管理者",
   last_name: "株式会社オニキ商事",
   first_name_kana: "カンリシャ",
