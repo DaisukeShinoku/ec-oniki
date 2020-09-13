@@ -53,6 +53,7 @@ User.create!(
   is_valid: true,
 )
 
+# 3
 User.create!(
   account_id: 'users3',
   email: 'users3@user.com',
@@ -74,7 +75,7 @@ User.create!(
   is_valid: true,
 )
 
-# 3
+# 4
 User.create!(
   account_id: 'users4',
   email: 'users4@user.com',
@@ -96,7 +97,7 @@ User.create!(
   is_valid: true,
 )
 
-# 4
+# 5
 User.create!(
   account_id: 'users5',
   email: 'users5@user.com',
@@ -116,7 +117,7 @@ User.create!(
   is_valid: true,
 )
 
-# 5
+# 6
 User.create!(
   account_id: 'users6',
   email: 'users6@user.com',
@@ -135,6 +136,51 @@ User.create!(
   address_street: "大字下名栗917",
   address_building: "大松閣205",
   is_valid: true,
+)
+
+# 7
+User.create!(
+  account_id: 'users7',
+  email: 'users7@user.com',
+  password: '000777',
+  password_confirmation: '000777',
+  first_name: "菊生",
+  last_name: "尾上",
+  first_name_kana: "キクオ",
+  last_name_kana: "オガミ",
+  first_name_roman: "KIKUO",
+  last_name_roman: "OGAMI",
+  birthday: "2000-12-31",
+  postcode: "9000021",
+  prefecture_code: "47",
+  address_city: "那覇市",
+  address_street: "泉崎１丁目２−２",
+  address_building: "沖縄県庁 独身寮302号室",
+  is_valid: true,
+  guest: true
+)
+
+# 8
+User.create!(
+  account_id: 'users8',
+  email: 'users8@user.com',
+  password: '000888',
+  password_confirmation: '000888',
+  first_name: "達也",
+  last_name: "猪俣",
+  first_name_kana: "タツヤ",
+  last_name_kana: "イノマタ",
+  first_name_roman: "TATSUYA",
+  last_name_roman: "INOMATA",
+  birthday: "1999-01-01",
+  postcode: "0600808",
+  prefecture_code: "1",
+  address_city: "札幌市北区",
+  address_street: "北８条西５丁目",
+  address_building: "北大学生寮302",
+  is_valid: true,
+  admin: true,
+  guest: true
 )
 
 # エリア
