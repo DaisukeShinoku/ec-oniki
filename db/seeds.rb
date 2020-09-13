@@ -154,8 +154,8 @@ User.create!(
   postcode: "9000021",
   prefecture_code: "47",
   address_city: "那覇市",
-  address_street: "泉崎１丁目２−２",
-  address_building: "沖縄県庁 独身寮302号室",
+  address_street: "泉崎1-2-2",
+  address_building: "独身寮302",
   is_valid: true,
   guest: true
 )
@@ -429,4 +429,193 @@ Product.create!(
   price: "1800",
   is_valid: true,
   image: open("#{Rails.root}/db/fixtures/cha01.jpg")
+)
+
+# 注文
+
+# 1
+Order.create!(
+  user_id: "2",
+  receiver: "山田太郎",
+  postcode: "1638001",
+  prefecture_code: "13",
+  address_city: "新宿区",
+  address_street: "西新宿2-8-1",
+  address_building: "都庁302",
+  payment_option: "bank_transfer",
+  status: "1",
+  postage: "800",
+  billing: "22083300"
+)
+
+OrderProduct.create!(
+  product_id: "1",
+  order_id: "1",
+  price: "10000000",
+  quantity: "2",
+  work_status: "disable"
+)
+
+OrderProduct.create!(
+  product_id: "4",
+  order_id: "1",
+  price: "25000",
+  quantity: "3",
+  work_status: "disable"
+)
+
+# 注文
+
+# 2
+Order.create!(
+  user_id: "3",
+  receiver: "田中華子",
+  postcode: "1000014",
+  prefecture_code: "13",
+  address_city: "千代田区",
+  address_street: "永田町1-7-1",
+  address_building: "国会議事堂101",
+  payment_option: "credit_card",
+  status: "1",
+  postage: "800",
+  billing: "10700"
+)
+
+OrderProduct.create!(
+  product_id: "12",
+  order_id: "2",
+  price: "1800",
+  quantity: "5",
+  work_status: "disable"
+)
+
+# 3
+Order.create!(
+  user_id: "4",
+  receiver: "青山和久",
+  postcode: "2310001",
+  prefecture_code: "14",
+  address_city: "横浜市中区",
+  address_street: "新港1-1",
+  address_building: "赤レンガ倉庫404",
+  payment_option: "credit_card",
+  status: "1",
+  postage: "800",
+  billing: "41500"
+)
+
+OrderProduct.create!(
+  product_id: "9",
+  order_id: "3",
+  price: "15000",
+  quantity: "2",
+  work_status: "disable"
+)
+
+OrderProduct.create!(
+  product_id: "11",
+  order_id: "3",
+  price: "7000",
+  quantity: "1",
+  work_status: "disable"
+)
+
+# 4
+Order.create!(
+  user_id: "5",
+  receiver: "岡崎瞳",
+  postcode: "2390801",
+  prefecture_code: "14",
+  address_city: "横須賀市",
+  address_street: "馬堀海岸4-1-23",
+  payment_option: "bank_transfer",
+  status: "1",
+  postage: "800",
+  billing: "37100"
+)
+
+OrderProduct.create!(
+  product_id: "8",
+  order_id: "4",
+  price: "1500",
+  quantity: "2",
+  work_status: "disable"
+)
+
+OrderProduct.create!(
+  product_id: "10",
+  order_id: "4",
+  price: "15000",
+  quantity: "2",
+  work_status: "disable"
+)
+
+# 5
+Order.create!(
+  user_id: "6",
+  receiver: "白鳥蒼甫",
+  postcode: "3570112",
+  prefecture_code: "11",
+  address_city: "飯能市",
+  address_street: "大字下名栗917",
+  address_building: "大松閣205",
+  payment_option: "bank_transfer",
+  status: "1",
+  postage: "800",
+  billing: "9160"
+)
+
+OrderProduct.create!(
+  product_id: "3",
+  order_id: "5",
+  price: "2600",
+  quantity: "1",
+  work_status: "disable"
+)
+
+OrderProduct.create!(
+  product_id: "5",
+  order_id: "5",
+  price: "5000",
+  quantity: "1",
+  work_status: "disable"
+)
+
+# 6
+Order.create!(
+  user_id: "7",
+  receiver: "尾上菊生",
+  postcode: "9000021",
+  prefecture_code: "47",
+  address_city: "那覇市",
+  address_street: "泉崎1-2-2",
+  address_building: "独身寮302",
+  payment_option: "bank_transfer",
+  status: "1",
+  postage: "800",
+  billing: "27200"
+)
+
+OrderProduct.create!(
+  product_id: "2",
+  order_id: "6",
+  price: "6000",
+  quantity: "2",
+  work_status: "disable"
+)
+
+OrderProduct.create!(
+  product_id: "6",
+  order_id: "6",
+  price: "3000",
+  quantity: "2",
+  work_status: "disable"
+)
+
+OrderProduct.create!(
+  product_id: "7",
+  order_id: "6",
+  price: "3000",
+  quantity: "2",
+  work_status: "disable"
 )
