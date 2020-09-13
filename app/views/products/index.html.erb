@@ -10,7 +10,7 @@
       <h1><%= @message %></h1>
       <br>
       <div class="row">
-        <% @products.order('id').each do |product| %>
+        <% @products.each do |product| %>
           <div class="col-4">
             <div class="card products-box">
               <%= link_to product_path(product) do %>

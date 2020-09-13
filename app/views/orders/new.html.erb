@@ -1,0 +1,95 @@
+<div class="container">
+
+  <br>
+  <div class="row mypage-header">
+    <h1>注文情報入力</h1>
+  </div>
+  <br>
+</div>
+
+<hr class="mypage-border">
+
+<br>
+<br>
+
+<div class="container">
+
+<%= render "layouts/flash" %>
+
+  <div class="row">
+    <div class="col-12" role="form">
+      <%= form_for @order, url: confirm_orders_path, method: :get do |f| %>
+        <div class="form-group row">
+          <div class="col-7">
+            <h2 class="text-success">支払い方法</h2>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-10 justify-content-md-center">
+            <%= f.radio_button :payment_option, 2 %>
+            <%= f.label :payment_option, "クレジットカード", value: 2, style: "display: inline-block;" %>
+            <br>
+            <%= f.radio_button :payment_option, 1 %>
+            <%= f.label :payment_option, "銀行振込", value: 1, style: "display: inline-block;" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-7">
+            <h2 class="text-success">お届け先</h2>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-10 justify-content-md-center">
+            <%= f.radio_button :radio_number, 1 %>
+            <%= f.label :radio_number, "ご自身の住所", value: 1, style: "display: inline-block;" %><br>
+            <%= current_user.fulladdress %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-10 justify-content-md-center">
+            <%= f.radio_button :radio_number, 2 %>
+            <%= f.label :radio_number, "登録先住所から選択", value: 2, style: "display: inline-block;" %><br>
+            <%= f.collection_select :destination_id, Destination.where(user_id: current_user.id), :id , :fulladdress, form: "new_order" %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-10 justify-content-md-center">
+            <%= f.radio_button :radio_number, 3 %>
+            <%= f.label :radio_number, "新しいお届け先", value: 3, style: "display: inline-block;" %><br>
+            <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+            <%= f.text_field :postcode, class: "form-control ", placeholder: "例:1638001(-:ハイフン は不要です)" %><br>
+            <%= f.label :prefecture_code, "都道府県" %>
+            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name ,include_blank: '都道府県' %><br>
+            <%= f.label :address_city, "市町村区" %>
+            <%= f.text_field :address_city, class: "form-control ", placeholder: "例:新宿区" %><br>
+            <%= f.label :address_street, "番地" %>
+            <%= f.text_field :address_street, class: "form-control ", placeholder: "例:西新宿2-8-1" %><br>
+            <%= f.label :receiver, "ビル名・部屋番号(任意)" %>
+            <%= f.text_field :address_building, class: "form-control ", placeholder: "例:都庁アパート302号室" %><br>
+            <%= f.label :receiver, "宛名" %>
+            <%= f.text_field :receiver, class: "form-control ", placeholder: "例:山田太郎" %>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div class="col-10 justify-content-md-center">
+            <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+          </div>
+        </div>
+
+
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<hr class="mypage-border">
+
+<br>
+<br>
+<br>

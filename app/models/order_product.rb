@@ -17,8 +17,12 @@ class OrderProduct < ApplicationRecord
     validates :work_status
   end
 
+  def price_tax
+    self.price * 1.1
+  end
+
   def subtotal
-    self.quantity * self.price
+    self.quantity * self.price_tax
   end
 
   def auto_update_order_status
