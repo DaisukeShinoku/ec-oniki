@@ -8,14 +8,9 @@ class OrdersController < ApplicationController
   end
 
   def create
-    binding.pry
     @order = Order.new(params_int(order_params))
     if @order.save
-      
       @cart_products = CartProduct.where(user_id: current_user.id)
-
-      binding.pry
-
       @cart_products.each do |cart_product|
         @order_products = OrderProduct.create(
           product_id: cart_product.product.id,
@@ -51,10 +46,6 @@ class OrdersController < ApplicationController
   end
   
   def confirm
-    
-    
-    binding.pry
-    
     
     @cart_products = CartProduct.where(user_id: current_user.id)
     @postage = 800

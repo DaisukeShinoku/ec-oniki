@@ -29,5 +29,11 @@ Rails.application.routes.draw do
     get '/top', to: 'homes#top' 
     resources :products
     resources :users, only: [:index, :show, :edit, :update]
+    patch '/admin/orders/:order_product_id', to: 'admin/orders#work_update'
+    resources :orders,only: [:index, :show, :update] do
+      member do
+        patch :order_update
+      end
+    end
   end
 end
